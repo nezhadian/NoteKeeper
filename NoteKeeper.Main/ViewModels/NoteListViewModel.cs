@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DORVPN.ExtendedControls;
+using Newtonsoft.Json;
 using NoteKeeper.Main.Helpers;
 using NoteKeeper.Main.Models;
 using System;
@@ -8,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Xml;
 using Formatting = Newtonsoft.Json.Formatting;
 
@@ -17,10 +19,19 @@ namespace NoteKeeper.Main.ViewModels
     {
         private const string FileName = "notes.json";
 
+        public ICommand  AddNewNoteCommand { get; set; }
+
         public NoteListViewModel()
         {
             Items = [];
             LoadItems();
+
+            AddNewNoteCommand = new Command(() =>
+            {
+                var note = new Note();
+                Items.Add(note);
+                SelectedItem = note;
+            });
         }
 
         public void SaveItems()
@@ -28,7 +39,6 @@ namespace NoteKeeper.Main.ViewModels
             var json = JsonConvert.SerializeObject(Items.ToList(), Formatting.Indented);
             File.WriteAllText(FileName, json);
         }
-
         public void LoadItems()
         {
             if (File.Exists(FileName))

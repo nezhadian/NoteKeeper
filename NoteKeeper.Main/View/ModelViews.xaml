@@ -9,7 +9,7 @@
                 FontSize="16"
                 FontWeight="Medium"
                 Foreground="{StaticResource gray900}"
-                Text="{Binding Content}"
+                Text="{Binding Title}"
                 TextTrimming="CharacterEllipsis" />
 
             <TextBlock

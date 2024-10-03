@@ -1,14 +1,4 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:vm="clr-namespace:NoteKeeper.Main.ViewModels">
-
-    <DataTemplate x:Key="mainNotelistViewModel" DataType="{x:Type vm:NoteListViewModel}">
-        <ListBox
-            ItemContainerStyle="{StaticResource noteListItemsContainer}"
-            ItemsSource="{Binding Items}"
-            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-            Style="{StaticResource ListboxesBase}" />
-    </DataTemplate>
-
-</ResourceDictionary>
+    xmlns:vm="clr-namespace:NoteKeeper.Main.ViewModels" />

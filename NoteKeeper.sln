@@ -5,9 +5,24 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E112640E-069A-4D5F-AB6B-FE3D2B292CC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteKeeper.Main", "NoteKeeper.Main\NoteKeeper.Main.csproj", "{B7FFAE38-09E2-4040-8AC4-7585B2E17F5B}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7FFAE38-09E2-4040-8AC4-7585B2E17F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7FFAE38-09E2-4040-8AC4-7585B2E17F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7FFAE38-09E2-4040-8AC4-7585B2E17F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7FFAE38-09E2-4040-8AC4-7585B2E17F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B7FFAE38-09E2-4040-8AC4-7585B2E17F5B} = {E112640E-069A-4D5F-AB6B-FE3D2B292CC2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4C15216D-248C-47A9-B970-EDF0028545C7}

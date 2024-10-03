@@ -5,7 +5,7 @@
     <DataTemplate DataType="{x:Type models:Note}">
         <StackPanel>
             <TextBlock
-                FontFamily="Segoe UI"
+                FontFamily="{StaticResource VazirmatnFont}"
                 FontSize="16"
                 FontWeight="Medium"
                 Foreground="{StaticResource gray900}"
@@ -15,7 +15,7 @@
             <TextBlock
                 Margin="0,4,0,0"
                 HorizontalAlignment="Right"
-                FontFamily="Segoe UI"
+                FontFamily="{StaticResource VazirmatnFont}"
                 FontSize="12"
                 FontWeight="Light"
                 Foreground="{StaticResource gray700}"

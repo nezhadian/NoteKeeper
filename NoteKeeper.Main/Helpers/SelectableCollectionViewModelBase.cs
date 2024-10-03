@@ -17,7 +17,7 @@ namespace NoteKeeper.Main.Helpers
         private T? _selectedItem;
         public T? SelectedItem
         {
-            get => _selectedItem ?? Items?[0];
+            get => _selectedItem;
             set
             {
                 if (value is null)

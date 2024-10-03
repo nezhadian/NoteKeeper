@@ -47,4 +47,60 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="MainTextBoxStyle" TargetType="TextBox">
+        <Setter Property="AcceptsReturn" Value="True" />
+        <Setter Property="AcceptsTab" Value="True" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontFamily" Value="{StaticResource VazirmatnFont}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Foreground" Value="{StaticResource gray700}" />
+        <Setter Property="SelectionBrush" Value="{StaticResource Primary500}" />
+    </Style>
+
+    <Style x:Key="CircularOnlyIconButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Secondary500}" />
+        <Setter Property="Foreground" Value="{StaticResource Background}" />
+        <Setter Property="Height" Value="56" />
+        <Setter Property="Width" Value="56" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Background="Transparent">
+                        <Ellipse x:Name="back" Fill="{TemplateBinding Background}" />
+
+                        <Grid Margin="{TemplateBinding Padding}">
+                            <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="back" Property="Fill" Value="{Binding Background, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static converters:SolidBrushColorMultiplierConverter.Instance}, ConverterParameter=1.1}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="back" Property="Fill" Value="{Binding Background, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static converters:SolidBrushColorMultiplierConverter.Instance}, ConverterParameter=0.94}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Rectangle
+                        Width="24"
+                        Height="24"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Fill="{StaticResource Background}"
+                        OpacityMask="{Binding Converter={x:Static converters:DrawingImageToOpacityMaskConverter.Instance}}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

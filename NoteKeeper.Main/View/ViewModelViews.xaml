@@ -5,7 +5,6 @@
 
     <DataTemplate x:Key="mainNotelistViewModel" DataType="{x:Type vm:NoteListViewModel}">
         <ListBox
-            Margin="12,16"
             ItemContainerStyle="{StaticResource noteListItemsContainer}"
             ItemsSource="{Binding Items}"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"

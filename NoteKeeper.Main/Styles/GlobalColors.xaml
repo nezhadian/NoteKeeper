@@ -35,7 +35,7 @@
 
 
 
-    <FontFamily x:Key="VazirmatnFont">pack://application:,,,/DORVPN.UI;component/Assets/Vazirmatn.ttf#Vazirmatn</FontFamily>
+    <FontFamily x:Key="VazirmatnFont">pack://application:,,,/Noteleeper.Main;component/Assets/Vazirmatn.ttf#Vazirmatn</FontFamily>
 
 
 </ResourceDictionary>

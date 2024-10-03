@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="D:\Projects\DORVPN\DORVPN.ExtendedControls\DORVPN.ExtendedControls.csproj" />
+  </ItemGroup>
+
 </Project>

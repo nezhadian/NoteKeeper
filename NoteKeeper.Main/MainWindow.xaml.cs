@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using NoteKeeper.Main.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +17,13 @@ namespace NoteKeeper.Main
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static readonly NoteListViewModel NoteViewModel = new NoteListViewModel();
+
+
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = NoteViewModel;
         }
     }
 }

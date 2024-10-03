@@ -1,9 +1,17 @@
-﻿<Application x:Class="NoteKeeper.Main.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:NoteKeeper.Main"
-             StartupUri="MainWindow.xaml">
+﻿<Application
+    x:Class="NoteKeeper.Main.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:NoteKeeper.Main"
+    StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/GlobalColors.xaml" />
+                <ResourceDictionary Source="/Styles/Styles.xaml" />
+                <ResourceDictionary Source="/View/ModelViews.xaml" />
+                <ResourceDictionary Source="/View/ViewModelViews.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

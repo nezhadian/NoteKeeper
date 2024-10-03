@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E112640E-069
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteKeeper.Main", "NoteKeeper.Main\NoteKeeper.Main.csproj", "{B7FFAE38-09E2-4040-8AC4-7585B2E17F5B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DORVPN.ExtendedControls", "D:\Projects\DORVPN\DORVPN.ExtendedControls\DORVPN.ExtendedControls.csproj", "{6166A164-36EF-4777-9CC9-8789ADE0F4CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{B7FFAE38-09E2-4040-8AC4-7585B2E17F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7FFAE38-09E2-4040-8AC4-7585B2E17F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7FFAE38-09E2-4040-8AC4-7585B2E17F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6166A164-36EF-4777-9CC9-8789ADE0F4CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6166A164-36EF-4777-9CC9-8789ADE0F4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6166A164-36EF-4777-9CC9-8789ADE0F4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6166A164-36EF-4777-9CC9-8789ADE0F4CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B7FFAE38-09E2-4040-8AC4-7585B2E17F5B} = {E112640E-069A-4D5F-AB6B-FE3D2B292CC2}
+		{6166A164-36EF-4777-9CC9-8789ADE0F4CF} = {E112640E-069A-4D5F-AB6B-FE3D2B292CC2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4C15216D-248C-47A9-B970-EDF0028545C7}

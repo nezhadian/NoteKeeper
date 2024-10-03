@@ -10,6 +10,7 @@
     Title="MainWindow"
     Width="1280"
     Height="720"
+    FocusManager.FocusedElement="{Binding ElementName=txtTitle}"
     mc:Ignorable="d">
 
     <Window.InputBindings>
@@ -79,6 +80,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBox
+                    x:Name="txtTitle"
                     Grid.Row="0"
                     VerticalAlignment="Top"
                     controls:TextBoxExtensions.HintText="Write the title"

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoteKeeper.Main.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -20,9 +21,6 @@ namespace NoteKeeper.Main.Helpers
             get => _selectedItem;
             set
             {
-                if (value is null)
-                    return;
-
                 SetProperty(ref _selectedItem, value);
                 OnSelectedItemChanged(value);
             }

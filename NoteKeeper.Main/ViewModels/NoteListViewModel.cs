@@ -20,6 +20,7 @@ namespace NoteKeeper.Main.ViewModels
         private const string FileName = "notes.json";
 
         public ICommand  AddNewNoteCommand { get; set; }
+        public Command  DeleteNoteCommand { get; set; }
         public ICommand SaveAllCommand { get; set; }
 
         public NoteListViewModel()
@@ -27,15 +28,38 @@ namespace NoteKeeper.Main.ViewModels
             Items = [];
             LoadItems();
 
-            AddNewNoteCommand = new Command(() =>
-            {
-                var note = new Note();
-                Items.Add(note);
-                SelectedItem = note;
-            });
+            AddNewNoteCommand = new Command(AddNewCmd_Execute);
+
+            DeleteNoteCommand = new Command(DeleteCmd_Execute, DeleteCmd_CanExecute);
 
             SaveAllCommand = new Command(SaveItems);
         }
+
+        private void AddNewCmd_Execute()
+        {
+            if (Items.Count == 0 && SelectedItem is not null)
+            {
+                Items.Add(SelectedItem);
+                DeleteNoteCommand.ChangeCanExecute();
+                return;
+            }
+
+            SelectedItem = AddNewEmptyNote();
+        }
+
+        private bool DeleteCmd_CanExecute(object arg)
+        {
+            return Items.Count != 0 && SelectedItem is not null;
+        }
+        private void DeleteCmd_Execute(object obj)
+        {
+            var index = Items.IndexOf(SelectedItem);
+            Items.RemoveAt(index);
+            index = Math.Min(index, Items.Count - 1);
+            SelectedItem = index == -1 ? new Note() : Items[index];
+        }
+
+
 
         public void SaveItems()
         {
@@ -50,6 +74,18 @@ namespace NoteKeeper.Main.ViewModels
                 var loadedItems = JsonConvert.DeserializeObject<IList<Note>>(json);
                 Items = new (loadedItems ?? []);
             }
+        }
+
+        private Note AddNewEmptyNote()
+        {
+            var note = new Note();
+            Items.Add(note);
+            return note;
+        }
+
+        public override void OnSelectedItemChanged(Note value)
+        {
+            DeleteNoteCommand.ChangeCanExecute();
         }
     }
 

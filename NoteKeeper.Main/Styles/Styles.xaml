@@ -66,25 +66,27 @@
         TargetType="TextBox">
         <Setter Property="AcceptsReturn" Value="True" />
         <Setter Property="AcceptsTab" Value="True" />
+        <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
     <Style
         x:Key="TextBoxStyle"
         BasedOn="{StaticResource MainTextBoxStyle}"
         TargetType="TextBox">
 
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource Background}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Cursor" Value="IBeam" />
-
+        <Setter Property="Padding" Value="4,8" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="8">
                         <Grid Grid.Column="1" Margin="4,0,0,0">
 
                             <ScrollViewer
@@ -92,18 +94,21 @@
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 FlowDirection="LeftToRight" />
-
-                            <TextBlock
-                                x:Name="HintTextBlock"
-                                Margin="3,0,0,0"
+                            <Grid
+                                Margin="{TemplateBinding Padding}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                FontFamily="{TemplateBinding FontFamily}"
-                                FontSize="{TemplateBinding FontSize}"
-                                Foreground="{TemplateBinding BorderBrush}"
-                                IsHitTestVisible="False"
-                                Text="{Binding (controls:TextBoxExtensions.HintText), RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                Visibility="Collapsed" />
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+
+                                <TextBlock
+                                    x:Name="HintTextBlock"
+                                    Margin="3,0,0,0"
+                                    FontFamily="{TemplateBinding FontFamily}"
+                                    FontSize="{TemplateBinding FontSize}"
+                                    Foreground="{TemplateBinding BorderBrush}"
+                                    IsHitTestVisible="False"
+                                    Text="{Binding (controls:TextBoxExtensions.HintText), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                    Visibility="Collapsed" />
+                            </Grid>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -119,13 +124,17 @@
         </Setter>
     </Style>
 
-
-
+    <Style
+        x:Key="BorderlessTextbox"
+        BasedOn="{StaticResource TextBoxStyle}"
+        TargetType="TextBox">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
 
 
 
     <!--  Buttons  -->
-
     <Style x:Key="CircularOnlyIconButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource Secondary500}" />
         <Setter Property="Foreground" Value="{StaticResource Background}" />
@@ -223,8 +232,8 @@
         x:Key="LighterButtonStyle"
         BasedOn="{StaticResource {x:Type Button}}"
         TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{DynamicResource Primary100}" />
-        <Setter Property="Foreground" Value="{DynamicResource Primary900}" />
+        <Setter Property="Background" Value="{DynamicResource gray100}" />
+        <Setter Property="Foreground" Value="{DynamicResource gray700}" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -257,7 +266,6 @@
     </Style>
 
     <!--  Texts  -->
-
     <Style x:Key="PageTitle" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource VazirmatnFont}" />
         <Setter Property="FontSize" Value="18" />
@@ -265,9 +273,15 @@
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="Foreground" Value="{StaticResource Background}" />
     </Style>
+    <Style x:Key="ListGroupsTitleText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource VazirmatnFont}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Foreground" Value="{StaticResource gray500}" />
+    </Style>
 
     <!--  Pages  -->
-
     <Style x:Key="DefaultDialogsPageStyle" TargetType="{x:Type nav:DialogPage}">
         <Setter Property="Background" Value="#1e000000" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -288,11 +302,11 @@
                             </Button.Template>
                         </Button>
                         <Border
+                            MinWidth="440"
                             Margin="16,0"
                             Padding="24,16,24,24"
-                            VerticalAlignment="Center"
                             HorizontalAlignment="Center"
-                            MinWidth="440"
+                            VerticalAlignment="Center"
                             Background="{StaticResource Background}"
                             CornerRadius="16">
                             <StackPanel>
@@ -324,5 +338,86 @@
 
         </Setter>
     </Style>
+
+
+
+
+
+
+    <!--  Multi Content Control  -->
+    <Style x:Key="HorizontalMultiContentControlStyle" TargetType="{x:Type controls:MultiContentControl}">
+        <Setter Property="Padding" Value="4,0,0,0" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:MultiContentControl}">
+                    <StackPanel Orientation="Horizontal">
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding ExtraContent}"
+                            ContentTemplate="{TemplateBinding ExtraContentTemplate}"
+                            FlowDirection="{TemplateBinding ExtraContentFlowDirection}" />
+                        <ContentPresenter
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="VerticalMultiContentControlStyle" TargetType="{x:Type controls:MultiContentControl}">
+        <Setter Property="Padding" Value="0,4,0,0" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:MultiContentControl}">
+                    <StackPanel Orientation="Vertical">
+                        <ContentPresenter
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding ExtraContent}"
+                            ContentTemplate="{TemplateBinding ExtraContentTemplate}"
+                            FlowDirection="{TemplateBinding ExtraContentFlowDirection}" />
+                        <ContentPresenter
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style
+        x:Key="TitledContentStyle"
+        BasedOn="{StaticResource VerticalMultiContentControlStyle}"
+        TargetType="{x:Type controls:MultiContentControl}">
+        <Setter Property="FontFamily" Value="{StaticResource VazirmatnFont}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="{StaticResource gray900}" />
+        <Setter Property="Padding" Value="0,4,0,0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="ExtraContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock
+                        FontSize="14"
+                        Style="{StaticResource ListGroupsTitleText}"
+                        Text="{Binding}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 </ResourceDictionary>

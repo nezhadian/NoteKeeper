@@ -7,18 +7,48 @@
     xmlns:local="clr-namespace:NoteKeeper.Main.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:nav="clr-namespace:DORVPN.ExtendedControls.Navigation;assembly=DORVPN.ExtendedControls"
-    Title="Information"
+    Title="Security Key"
     d:DesignHeight="450"
     d:DesignWidth="800"
     Style="{StaticResource DefaultDialogsPageStyle}"
     mc:Ignorable="d">
-    <Grid>
-        <TextBlock
-            FontSize="18"
-            FontWeight="SemiBold"
-            Foreground="{StaticResource gray700}">
-            <Run FontWeight="Regular">Your Key:</Run>
-            <Run Text="{Binding storage.Key}" />
-        </TextBlock>
-    </Grid>
+    <StackPanel>
+        <controls:MultiContentControl
+            Margin="0,8,0,0"
+            ExtraContent="Enter your key:"
+            Style="{StaticResource TitledContentStyle}">
+            <TextBox x:Name="txtKey" Style="{StaticResource TextBoxStyle}" />
+        </controls:MultiContentControl>
+
+        <controls:MultiContentControl
+            Margin="0,8,0,0"
+            Content="{Binding storage.Key}"
+            ExtraContent="Current Key:"
+            Style="{StaticResource TitledContentStyle}" />
+
+        <StackPanel
+            Margin="0,16,0,0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+
+            <Button
+                Height="32"
+                Content="Copy"
+                Style="{StaticResource LighterButtonStyle}" />
+
+            <Button
+                Height="32"
+                Margin="8,0,0,0"
+                Click="GenerateKey_Click"
+                Content="Generate"
+                Style="{StaticResource LighterButtonStyle}" />
+
+            <Button
+                Height="32"
+                Margin="8,0,0,0"
+                Click="UseKey_Click"
+                Content="Use" />
+        </StackPanel>
+
+    </StackPanel>
 </nav:DialogPage>

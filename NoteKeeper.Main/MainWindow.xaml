@@ -9,7 +9,7 @@
     xmlns:nav="clr-namespace:DORVPN.ExtendedControls.Navigation;assembly=DORVPN.ExtendedControls"
     xmlns:pages="clr-namespace:NoteKeeper.Main.Pages"
     xmlns:vm="clr-namespace:NoteKeeper.Main.ViewModels"
-    Title="MainWindow"
+    Title="Note Keeper"
     Width="1280"
     Height="720"
     mc:Ignorable="d">

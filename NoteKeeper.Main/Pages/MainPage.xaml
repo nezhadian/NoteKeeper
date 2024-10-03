@@ -22,27 +22,44 @@
             Grid.Row="0"
             Margin="12,16,0,0"
             Orientation="Horizontal">
-            <Button Command="{Binding notes.AddNewNoteCommand}" Content="Add new note" />
+            <Button Command="{Binding notes.AddNewNoteCommand}">
+                <controls:MultiContentControl
+                    Content="Add new note"
+                    ExtraContent="{StaticResource Icons.Add}"
+                    Style="{StaticResource ButtonIconedContent}" />
+            </Button>
             <Button
                 Margin="8,0,0,0"
                 Command="{Binding notes.SaveAllCommand}"
-                Content="Save All"
-                Style="{StaticResource LighterButtonStyle}" />
+                Style="{StaticResource LighterButtonStyle}">
+                <controls:MultiContentControl
+                    Content="Save All"
+                    ExtraContent="{StaticResource Icons.Save}"
+                    Style="{StaticResource ButtonIconedContent}" />
+            </Button>
 
             <Button
                 Margin="8,0,0,0"
                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type nav:ExtendedPage}}, Path=PageContainer.NavigateOrShowDialogCommand}"
                 CommandParameter="{x:Type local:InformationDialogue}"
-                Content="Information"
-                Style="{StaticResource LighterButtonStyle}" />
+                Style="{StaticResource LighterButtonStyle}">
+                <controls:MultiContentControl
+                    Content="Security Key"
+                    ExtraContent="{StaticResource Icons.Key}"
+                    Style="{StaticResource ButtonIconedContent}" />
+            </Button>
 
             <Button
                 Margin="8,0,0,0"
                 Background="{StaticResource Secondary100}"
                 Command="{Binding notes.DeleteNoteCommand}"
-                Content="Delete Selected"
                 Foreground="{StaticResource Secondary900}"
-                Style="{StaticResource LighterButtonStyle}" />
+                Style="{StaticResource LighterButtonStyle}">
+                <controls:MultiContentControl
+                    Content="Delete Selected"
+                    ExtraContent="{StaticResource Icons.Delete}"
+                    Style="{StaticResource ButtonIconedContent}" />
+            </Button>
 
 
         </StackPanel>

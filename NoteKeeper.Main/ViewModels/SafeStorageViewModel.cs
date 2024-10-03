@@ -16,7 +16,7 @@ namespace NoteKeeper.Main.ViewModels
         private const string FileName = "notes.dat";
         private const int KeySize = 32;
         private const int IVSize = 16;
-
+        public static readonly int FullKeySize = KeySize + IVSize;
 
         private string? _key = "9lp6YXR7i63lih5YZ1sxrg9CsVgxxvPT6HIzkGaq296o169hldmC17GBQ18lp0DR";
         public string? Key
@@ -79,7 +79,7 @@ namespace NoteKeeper.Main.ViewModels
                 return "[]";
             }
         }
-        private string GenerateKeyAndIv()
+        public static string GenerateKeyAndIv()
         {
             using (var rng = new RNGCryptoServiceProvider())
             {

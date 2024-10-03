@@ -418,6 +418,29 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style
+        x:Key="ButtonIconedContent"
+        BasedOn="{StaticResource HorizontalMultiContentControlStyle}"
+        TargetType="{x:Type controls:MultiContentControl}">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="{StaticResource VazirmatnFont}" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=Button, Mode=FindAncestor}, Path=Foreground}" />
+        <Setter Property="Padding" Value="8,0,0,0" />
+        <Setter Property="FlowDirection" Value="LeftToRight" />
+        <Setter Property="ExtraContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Rectangle
+                        Width="16"
+                        Height="16"
+                        Fill="{Binding RelativeSource={RelativeSource AncestorType=Button, Mode=FindAncestor}, Path=Foreground}"
+                        OpacityMask="{Binding Converter={x:Static converters:DrawingImageToOpacityMaskConverter.Instance}}" />
+
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
 </ResourceDictionary>

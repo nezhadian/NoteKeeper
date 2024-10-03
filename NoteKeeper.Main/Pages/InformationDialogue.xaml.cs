@@ -1,4 +1,5 @@
 ﻿using DORVPN.ExtendedControls.Navigation;
+using NoteKeeper.Main.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,35 @@ namespace NoteKeeper.Main.Pages
         public InformationDialogue()
         {
             InitializeComponent();
+        }
+
+        private void UseKey_Click(object sender, RoutedEventArgs e)
+        {
+            var bytes = new byte[SafeStorageViewModel.FullKeySize];
+
+            if (!Convert.TryFromBase64String(txtKey.Text, bytes, out int bw))
+            {
+                MessageBox.Show("Wrong Key");
+                return;
+            }
+            if (bw != SafeStorageViewModel.FullKeySize)
+            {
+                MessageBox.Show("Wrong Length");
+                return;
+
+            }
+
+
+
+            MainViewModel.Default.storage.Key = txtKey.Text;
+            MainViewModel.Default.notes.LoadItems();
+            PageContainer.GoBack();
+
+        }
+
+        private void GenerateKey_Click(object sender, RoutedEventArgs e)
+        {
+            txtKey.Text = SafeStorageViewModel.GenerateKeyAndIv();
         }
     }
 }

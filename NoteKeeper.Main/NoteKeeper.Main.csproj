@@ -16,4 +16,10 @@
     <ProjectReference Include="D:\Projects\DORVPN\DORVPN.ExtendedControls\DORVPN.ExtendedControls.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Pages\InformationDialogue.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

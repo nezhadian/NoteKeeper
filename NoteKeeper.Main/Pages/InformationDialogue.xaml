@@ -1,0 +1,24 @@
+﻿<nav:DialogPage
+    x:Class="NoteKeeper.Main.Pages.InformationDialogue"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:DORVPN.ExtendedControls.Controls;assembly=DORVPN.ExtendedControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:NoteKeeper.Main.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:nav="clr-namespace:DORVPN.ExtendedControls.Navigation;assembly=DORVPN.ExtendedControls"
+    Title="Information"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Style="{StaticResource DefaultDialogsPageStyle}"
+    mc:Ignorable="d">
+    <Grid>
+        <TextBlock
+            FontSize="18"
+            FontWeight="SemiBold"
+            Foreground="{StaticResource gray700}">
+            <Run FontWeight="Regular">Your Code:</Run>
+            <Run>5456456454564554546</Run>
+        </TextBlock>
+    </Grid>
+</nav:DialogPage>

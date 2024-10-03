@@ -25,8 +25,19 @@
             <Button Command="{Binding AddNewNoteCommand}" Content="Add new note" />
             <Button
                 Margin="8,0,0,0"
+                Background="{StaticResource gray100}"
                 Command="{Binding SaveAllCommand}"
                 Content="Save All"
+                Foreground="{StaticResource gray700}"
+                Style="{StaticResource LighterButtonStyle}" />
+
+            <Button
+                Margin="8,0,0,0"
+                Background="{StaticResource gray100}"
+                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type nav:ExtendedPage}}, Path=PageContainer.NavigateOrShowDialogCommand}"
+                CommandParameter="{x:Type local:InformationDialogue}"
+                Content="Information"
+                Foreground="{StaticResource gray700}"
                 Style="{StaticResource LighterButtonStyle}" />
 
             <Button
@@ -36,6 +47,8 @@
                 Content="Delete Selected"
                 Foreground="{StaticResource Secondary900}"
                 Style="{StaticResource LighterButtonStyle}" />
+
+
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="12,16,12,16">

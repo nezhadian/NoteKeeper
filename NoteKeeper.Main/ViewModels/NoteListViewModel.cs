@@ -20,6 +20,7 @@ namespace NoteKeeper.Main.ViewModels
         private const string FileName = "notes.json";
 
         public ICommand  AddNewNoteCommand { get; set; }
+        public ICommand SaveAllCommand { get; set; }
 
         public NoteListViewModel()
         {
@@ -32,6 +33,8 @@ namespace NoteKeeper.Main.ViewModels
                 Items.Add(note);
                 SelectedItem = note;
             });
+
+            SaveAllCommand = new Command(SaveItems);
         }
 
         public void SaveItems()

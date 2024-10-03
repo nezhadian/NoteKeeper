@@ -24,7 +24,7 @@
             <Button Command="{Binding AddNewNoteCommand}" Content="Add new note" />
             <Button
                 Margin="8,0,0,0"
-                Command="{Binding AddNewNoteCommand}"
+                Command="{Binding SaveAllCommand}"
                 Content="Save All"
                 Style="{StaticResource LighterButtonStyle}" />
         </StackPanel>
@@ -70,7 +70,7 @@
                     FontWeight="Regular"
                     Foreground="{StaticResource gray900}"
                     Style="{StaticResource TextBoxStyle}"
-                    Text="{Binding SelectedItem.Title, Mode=TwoWay}" />
+                    Text="{Binding SelectedItem.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <Rectangle
                     Grid.Row="1"
@@ -81,7 +81,7 @@
                 <TextBox
                     Grid.Row="2"
                     Style="{StaticResource EditorTextBoxStyle}"
-                    Text="{Binding SelectedItem.Content, Mode=TwoWay}" />
+                    Text="{Binding SelectedItem.Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             </Grid>
 

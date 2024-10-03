@@ -17,8 +17,8 @@
             FontSize="18"
             FontWeight="SemiBold"
             Foreground="{StaticResource gray700}">
-            <Run FontWeight="Regular">Your Code:</Run>
-            <Run>5456456454564554546</Run>
+            <Run FontWeight="Regular">Your Key:</Run>
+            <Run Text="{Binding storage.Key}" />
         </TextBlock>
     </Grid>
 </nav:DialogPage>

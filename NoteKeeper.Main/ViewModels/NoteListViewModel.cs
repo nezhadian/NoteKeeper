@@ -17,10 +17,12 @@ namespace NoteKeeper.Main.ViewModels
 {
     public class NoteListViewModel : SelectableCollectionViewModelBase<Note>
     {
-        private const string FileName = "notes.json";
 
-        public ICommand  AddNewNoteCommand { get; set; }
-        public Command  DeleteNoteCommand { get; set; }
+        public SafeStorageViewModel storage { get; set; } = new SafeStorageViewModel();
+
+
+        public ICommand AddNewNoteCommand { get; set; }
+        public Command DeleteNoteCommand { get; set; }
         public ICommand SaveAllCommand { get; set; }
 
         public NoteListViewModel()
@@ -64,16 +66,16 @@ namespace NoteKeeper.Main.ViewModels
         public void SaveItems()
         {
             var json = JsonConvert.SerializeObject(Items.ToList(), Formatting.Indented);
-            File.WriteAllText(FileName, json);
+            storage.SaveAndEncrypt(json);
         }
         public void LoadItems()
         {
-            if (File.Exists(FileName))
-            {
-                var json = File.ReadAllText(FileName);
-                var loadedItems = JsonConvert.DeserializeObject<IList<Note>>(json);
-                Items = new (loadedItems ?? []);
-            }
+            var json = storage.ReadAndDecrypt();
+            if (json is null)
+                return;
+
+            var loadedItems = JsonConvert.DeserializeObject<IList<Note>>(json);
+            Items = new(loadedItems ?? []);
         }
 
         private Note AddNewEmptyNote()

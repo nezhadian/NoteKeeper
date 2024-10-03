@@ -10,9 +10,8 @@ namespace NoteKeeper.Main.ViewModels
     {
         public static readonly MainViewModel Default = new MainViewModel();
 
-        public NoteListViewModel notes { get; } = new();
         public SafeStorageViewModel storage { get; } = new();
-
+        public NoteListViewModel notes { get; } = new();
 
     }
 }

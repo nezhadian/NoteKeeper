@@ -18,9 +18,6 @@ namespace NoteKeeper.Main.ViewModels
     public class NoteListViewModel : SelectableCollectionViewModelBase<Note>
     {
 
-        public SafeStorageViewModel storage { get; set; } = new SafeStorageViewModel();
-
-
         public ICommand AddNewNoteCommand { get; set; }
         public Command DeleteNoteCommand { get; set; }
         public ICommand SaveAllCommand { get; set; }
@@ -28,7 +25,6 @@ namespace NoteKeeper.Main.ViewModels
         public NoteListViewModel()
         {
             Items = [];
-            LoadItems();
 
             AddNewNoteCommand = new Command(AddNewCmd_Execute);
 
@@ -66,11 +62,11 @@ namespace NoteKeeper.Main.ViewModels
         public void SaveItems()
         {
             var json = JsonConvert.SerializeObject(Items.ToList(), Formatting.Indented);
-            storage.SaveAndEncrypt(json);
+            MainViewModel.Default.storage.SaveAndEncrypt(json);
         }
         public void LoadItems()
         {
-            var json = storage.ReadAndDecrypt();
+            var json = MainViewModel.Default.storage.ReadAndDecrypt();
             if (json is null)
                 return;
 

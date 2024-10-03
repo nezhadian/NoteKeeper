@@ -21,6 +21,7 @@ namespace NoteKeeper.Main
         {
             InitializeComponent();
             DataContext = MainViewModel.Default;
+            MainViewModel.Default.notes.LoadItems();
         }
     }
 }

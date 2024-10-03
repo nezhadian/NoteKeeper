@@ -13,9 +13,13 @@ namespace NoteKeeper.Main.Helpers
 
 
         //props
-        public ObservableCollection<T> Items { get; set; }
+        private ObservableCollection<T> _items;
+        public ObservableCollection<T> Items { get => _items; set => SetProperty(ref _items,value); }
+
+
 
         private T? _selectedItem;
+
         public T? SelectedItem
         {
             get => _selectedItem;

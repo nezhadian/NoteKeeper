@@ -1,4 +1,5 @@
-﻿using NoteKeeper.Main.Helpers;
+﻿using DORVPN.ExtendedControls;
+using NoteKeeper.Main.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace NoteKeeper.Main.ViewModels
 {
@@ -14,7 +16,6 @@ namespace NoteKeeper.Main.ViewModels
         private const string FileName = "notes.dat";
         private const int KeySize = 32;
         private const int IVSize = 16;
-
 
 
         private string? _key = "9lp6YXR7i63lih5YZ1sxrg9CsVgxxvPT6HIzkGaq296o169hldmC17GBQ18lp0DR";
@@ -46,7 +47,6 @@ namespace NoteKeeper.Main.ViewModels
                 }
             }
         }
-
         public string? ReadAndDecrypt()
         {
             if (!File.Exists(FileName))
@@ -79,8 +79,6 @@ namespace NoteKeeper.Main.ViewModels
                 return "[]";
             }
         }
-
-
         private string GenerateKeyAndIv()
         {
             using (var rng = new RNGCryptoServiceProvider())

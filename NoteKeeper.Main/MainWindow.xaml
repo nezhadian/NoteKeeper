@@ -17,7 +17,7 @@
     <Window.InputBindings>
         <KeyBinding
             Key="N"
-            Command="{Binding AddNewNoteCommand}"
+            Command="{Binding notes.AddNewNoteCommand}"
             Modifiers="Ctrl" />
     </Window.InputBindings>
 

@@ -22,10 +22,10 @@
             Grid.Row="0"
             Margin="12,16,0,0"
             Orientation="Horizontal">
-            <Button Command="{Binding AddNewNoteCommand}" Content="Add new note" />
+            <Button Command="{Binding notes.AddNewNoteCommand}" Content="Add new note" />
             <Button
                 Margin="8,0,0,0"
-                Command="{Binding SaveAllCommand}"
+                Command="{Binding notes.SaveAllCommand}"
                 Content="Save All"
                 Style="{StaticResource LighterButtonStyle}" />
 
@@ -39,7 +39,7 @@
             <Button
                 Margin="8,0,0,0"
                 Background="{StaticResource Secondary100}"
-                Command="{Binding DeleteNoteCommand}"
+                Command="{Binding notes.DeleteNoteCommand}"
                 Content="Delete Selected"
                 Foreground="{StaticResource Secondary900}"
                 Style="{StaticResource LighterButtonStyle}" />
@@ -58,8 +58,8 @@
             <ListBox
                 Grid.Column="0"
                 ItemContainerStyle="{StaticResource noteListItemsContainer}"
-                ItemsSource="{Binding Items}"
-                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                ItemsSource="{Binding notes.Items}"
+                SelectedItem="{Binding notes.SelectedItem, Mode=TwoWay}"
                 Style="{StaticResource ListboxesBase}" />
 
             <!--  Sep  -->
@@ -94,7 +94,7 @@
                         FontWeight="Regular"
                         Foreground="{StaticResource gray900}"
                         Style="{StaticResource BorderlessTextbox}"
-                        Text="{Binding SelectedItem.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding notes.SelectedItem.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                     <Rectangle
                         Grid.Row="1"
@@ -105,7 +105,7 @@
                     <TextBox
                         Grid.Row="2"
                         Style="{StaticResource EditorTextBoxStyle}"
-                        Text="{Binding SelectedItem.Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding notes.SelectedItem.Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 </Grid>
 

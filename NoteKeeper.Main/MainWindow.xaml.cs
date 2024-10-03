@@ -17,13 +17,10 @@ namespace NoteKeeper.Main
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static readonly NoteListViewModel NoteViewModel = new NoteListViewModel();
-
-
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = NoteViewModel;
+            DataContext = MainViewModel.Default;
         }
     }
 }

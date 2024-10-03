@@ -6,11 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:NoteKeeper.Main"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:nav="clr-namespace:DORVPN.ExtendedControls.Navigation;assembly=DORVPN.ExtendedControls"
+    xmlns:pages="clr-namespace:NoteKeeper.Main.Pages"
     xmlns:vm="clr-namespace:NoteKeeper.Main.ViewModels"
     Title="MainWindow"
     Width="1280"
     Height="720"
-    FocusManager.FocusedElement="{Binding ElementName=txtTitle}"
     mc:Ignorable="d">
 
     <Window.InputBindings>
@@ -21,89 +22,7 @@
     </Window.InputBindings>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <StackPanel
-            Grid.Row="0"
-            Margin="12,16,0,0"
-            Orientation="Horizontal">
-            <Button Command="{Binding AddNewNoteCommand}" Content="Add new note" />
-            <Button
-                Margin="8,0,0,0"
-                Command="{Binding SaveAllCommand}"
-                Content="Save All"
-                Style="{StaticResource LighterButtonStyle}" />
-
-            <Button
-                Margin="8,0,0,0"
-                Background="{StaticResource Secondary100}"
-                Command="{Binding DeleteNoteCommand}"
-                Content="Delete Selected"
-                Foreground="{StaticResource Secondary900}"
-                Style="{StaticResource LighterButtonStyle}" />
-        </StackPanel>
-
-        <Grid Grid.Row="1" Margin="12,16,12,16">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="Auto" />
-                <!--  This column is for the GridSplitter  -->
-                <ColumnDefinition Width="3*" />
-            </Grid.ColumnDefinitions>
-
-            <!--  Listbox  -->
-            <ListBox
-                Grid.Column="0"
-                ItemContainerStyle="{StaticResource noteListItemsContainer}"
-                ItemsSource="{Binding Items}"
-                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                Style="{StaticResource ListboxesBase}" />
-
-            <!--  Sep  -->
-            <GridSplitter
-                Grid.Column="1"
-                Width="1"
-                Margin="12,0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                Background="{StaticResource gray300}" />
-
-            <!--  Editor  -->
-            <Grid Grid.Column="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <TextBox
-                    x:Name="txtTitle"
-                    Grid.Row="0"
-                    VerticalAlignment="Top"
-                    controls:TextBoxExtensions.HintText="Write the title"
-                    FontSize="18"
-                    FontWeight="Regular"
-                    Foreground="{StaticResource gray900}"
-                    Style="{StaticResource TextBoxStyle}"
-                    Text="{Binding SelectedItem.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
-                <Rectangle
-                    Grid.Row="1"
-                    Height="1"
-                    Margin="0,8"
-                    Fill="{StaticResource gray300}" />
-
-                <TextBox
-                    Grid.Row="2"
-                    Style="{StaticResource EditorTextBoxStyle}"
-                    Text="{Binding SelectedItem.Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
-            </Grid>
-
-        </Grid>
+        <nav:Container Content="{x:Type pages:MainPage}" />
     </Grid>
 
 </Window>
